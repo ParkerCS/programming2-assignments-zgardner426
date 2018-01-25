@@ -17,9 +17,9 @@
 #Take the following program:
 
 score = 41237
-highscore = 1023407
+high_score = 1023407
 print("Score:      " + str(score) )
-print("High score: " + str(highscore) )
+print("High score: " + str(high_score) )
 
 #Which right now outputs:
 #Score:      41237
