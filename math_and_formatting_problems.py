@@ -4,13 +4,13 @@
 
 #PROBLEM 1 (2pts)
 #Use {}.format() to print 0.000321192 in scientific notation to two decimals
-
+print("{:.2e}".format(0.000321192))
 
 
 #PROBLEM 2 (2pts)
 #You get 8 out of 9 on a quiz.
 #Print 8/9 using {}.format() so that it appears as 88.9%
-
+print("{:.1%}".format(8 / 9))
 
 
 #PROBLEM 3 (3pts)
@@ -18,8 +18,8 @@
 
 score = 41237
 high_score = 1023407
-print("Score:      " + str(score) )
-print("High score: " + str(high_score) )
+print("Score:{:>13,}".format(score))
+print("High Score:{:>8,}".format(high_score))
 
 #Which right now outputs:
 #Score:      41237
