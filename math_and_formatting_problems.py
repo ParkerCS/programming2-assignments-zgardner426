@@ -59,8 +59,7 @@ print("High Score:{:>8,}".format(high_score))
 
 
 for i in range(1, 20):
-  print(i) # in case you forgot how to use a loop, here's a start
-
+  print("1 / {1} = {0:.3}".format(1 / i, i)) # in case you forgot how to use a loop, here's a start
 
 
 
@@ -69,9 +68,8 @@ for i in range(1, 20):
 # 3(60x^2 + 3x/9) + 2x - 4/3(x) - sqrt(x)
 # where x = 12.83
 
-
 x = 12.83
-your_answer = 0  # Substitute your equation for the zero
+your_answer = 3 * (60 * (x ** 2) + ((3 * x) / 9)) + (2 * x) - ((4 / 3) * x) -(x ** (1 / 2))  # Substitute your equation for the zero
 print(your_answer)
 
 
@@ -80,6 +78,10 @@ print(your_answer)
 #Shipping costs $4 for the first copy and 75 cents for each additional copy.
 # Calculate the total wholesale costs for 68 copies formatted (using {}.format()) to the nearest penny.
 
+cost = 27.95
+shipping_cost = 4 + (.75 * 67)
+total_cost = (68 * (cost * .50)) + shipping_cost
+print("{:,}".format(total_cost))
 
 
 
@@ -92,6 +94,8 @@ print(your_answer)
 chair_price = 189.99
 tax_percent = 0.095
 units = 8
+final_price = ((units * chair_price) * tax_percent) + (units * chair_price)
+print("{:,.2f}".format(final_price))
 
 
 
@@ -107,8 +111,10 @@ units = 8
 a = 17
 b = 23
 print( "a =", a, "and b =", b)
-a += b # this is the first line to help you out
+a += b# this is the first line to help you out
 # add two more lines of code here to cause swapping of a and b
+a -= 17
+b-= 6
 print( "a =", a, "and b =", b)
 
 
@@ -124,3 +130,17 @@ print( "a =", a, "and b =", b)
 # and so on for nickels and pennies.
 # The result is that you express the amount as the minimum number of coins needed.
 
+count = 183.78
+dollars = 0
+quarters = 0
+dimes = 0
+nickels = 0
+pennies = 0
+
+dollars = count // 1
+quarters = (count - dollars) // .25
+dimes = (count - dollars - (.25 * quarters)) // .1
+nickels = (count - dollars - (.25 * quarters) - (.1 * dimes)) // .05
+pennies = (count - dollars - (.25 * quarters) - (.1 * dimes) - (.05 * nickels)) // .01
+
+print("dollars = {:3d} quarters = {:d} dimes = {:d} nickels = {:d}  pennies = {:d}".format(int(dollars), int(quarters), int(dimes), int(nickels), int(pennies)))
