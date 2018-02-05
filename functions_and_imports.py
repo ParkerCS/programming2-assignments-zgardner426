@@ -56,3 +56,14 @@ function_3(13, 89)
 # import the file import_me from Problem 5
 # Create a main program using the format if __name__ == "__main__": 
 # Place every call from problems 1 through 5 into this program.
+
+
+import import_me
+
+
+if __name__ == "__main__":
+    function_1("What's up Everybody")
+    function_2(123, 38, 9)
+    function_3(34, 7987)
+    import_me.password_function()
+
