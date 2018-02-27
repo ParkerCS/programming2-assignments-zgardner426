@@ -143,6 +143,7 @@ def winner():
     elif game_board[0][2] == game_board[1][1] == game_board[2][0] == player:
         print("The winner is", player)
         return True
+    return False
 
 
 def draw():
@@ -154,12 +155,12 @@ def draw():
 
 
 while not Done:
-    turns += 1
     display_board(game_board)
-    opponent(turns)
     get_row_column(player)
-    winner()
+    done = winner()
     draw()
+    opponent(turns)
+    turns += 1
 
     '''   
     row = int(input("Pick a row")) - 1
