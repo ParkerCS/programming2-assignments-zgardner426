@@ -59,7 +59,7 @@ print("High Score:{:>8,}".format(high_score))
 
 
 for i in range(1, 20):
-  print("1 / {1} = {0:.3}".format(1 / i, i)) # in case you forgot how to use a loop, here's a start
+  print("1 / {1:.2} = {0:.3}".format(1 / i, i)) # in case you forgot how to use a loop, here's a start
 
 
 
