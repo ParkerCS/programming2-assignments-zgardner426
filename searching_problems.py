@@ -83,13 +83,25 @@ file.close()
 
 # How many times does "Cheshire" immediately followed by "Cat" occur?
 file = open('search_files/AliceInWonderLand.txt')
+
+
 num_cheshire = 0
+book = []
+
 
 for lines in file:
     words = split_line(lines)
     for word in words:
-        if word == "Cheshire":
+        book.append(word)
+
+
+for i in range(len(book)):
+    if book[i] == "Cheshire":
+        if book[i + 1].upper() == "CAT":
             num_cheshire += 1
+    else:
+        continue
+
 
 print(num_cheshire)
 file.close()
