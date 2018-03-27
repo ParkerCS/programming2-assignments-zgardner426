@@ -44,26 +44,29 @@ with open('files/CTA_-_Ridership_-_Annual_Boarding_Totals.csv') as f:
     data = list(reader)
 
 
-years = [x for x in range(1, 29)]
+years = [x for x in range(1, 30)]
 year_names = [x[0] for x in data][1:]
 
 riders_bus = [x[1] for x in data][1:]
 riders_bus = [int(x) for x in riders_bus]
 riders_paratransit = [x[2] for x in data][1:]
-riders_paratransit = [int(x) for x in riders_bus]
+riders_paratransit = [int(x) for x in riders_paratransit]
 riders_train = [x[3] for x in data][1:]
-riders_train = [int(x) for x in riders_bus]
+riders_train = [int(x) for x in riders_train]
 riders_total = [x[4] for x in data][1:]
-riders_total = [int(x) for x in riders_bus]
+riders_total = [int(x) for x in riders_total]
+
+
 
 
 plt.figure(2, tight_layout=True)
-plt.plot(years, riders_bus)
-plt.plot(years, riders_train)
-plt.plot(years, riders_paratransit)
-plt.plot(years, riders_total)
-plt.xticks(year_names, rotation=90)
+plt.plot(years, riders_bus, c="red")
+plt.plot(years, riders_train, c="blue")
+plt.plot(years, riders_paratransit, c="green")
+plt.plot(years, riders_total, c="yellow")
+plt.xticks(years, year_names, rotation=90)
 plt.ylabel("Number of Riders")
 plt.xlabel("Years")
 plt.title("CTA Ridership 1988-2016")
+plt.legend(bbox_to_anchor=(.75, .40), loc="center")
 plt.show()
