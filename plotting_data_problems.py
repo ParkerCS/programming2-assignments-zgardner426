@@ -60,13 +60,13 @@ riders_total = [int(x) for x in riders_total]
 
 
 plt.figure(2, tight_layout=True)
-plt.plot(years, riders_bus, c="red")
-plt.plot(years, riders_train, c="blue")
-plt.plot(years, riders_paratransit, c="green")
-plt.plot(years, riders_total, c="yellow")
+plt.plot(years, riders_bus, c="red", label="Bus")
+plt.plot(years, riders_train, c="blue", label="Train")
+plt.plot(years, riders_paratransit, c="green", label="Paratransit")
+plt.plot(years, riders_total, c="yellow", label="Total")
 plt.xticks(years, year_names, rotation=90)
 plt.ylabel("Number of Riders")
 plt.xlabel("Years")
 plt.title("CTA Ridership 1988-2016")
-plt.legend(bbox_to_anchor=(.75, .40), loc="center")
+plt.legend(bbox_to_anchor=(.75, .35), loc="upper left")
 plt.show()
