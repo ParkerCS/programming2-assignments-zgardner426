@@ -27,3 +27,48 @@ Challenge (for fun):
 - Add colleges and universities (use a different marker type)
 
 '''
+
+import matplotlib.pyplot as plt
+import csv
+import numpy as np
+
+with open('files/Chicago_Energy_Benchmarking_-_2016_Data_Reported_in_2017.csv') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+
+
+
+total_GHG_emissions = []
+gHG_intensity = []
+square_footage = []
+school_names = []
+data = [x for x in data if x[6] == "K-12 School"]
+data = [x for x in data if x[21] != ""]
+data.sort(key=lambda x: float(x[21]))
+
+for i in range(len(data)):
+        try:
+            gHG_emission = float(data[i][20])
+            gHG_intens = float(data[i][21])
+            square_f = float(data[i][7])
+            total_GHG_emissions.append(gHG_emission)
+            gHG_intensity.append(gHG_intens)
+            square_footage.append(square_f)
+            names = data[i][2]
+            school_names.append(names)
+        except:
+            print("failed", data[i][2])
+
+
+plt.figure(1)
+plt.scatter(square_footage, total_GHG_emissions)
+plt.title("Greenhouse Gas Emissions in K-12 Schools by Square Footage")
+plt.ylabel("Total Greenhouse Gas Emissions")
+plt.xlabel("Square Footage")
+for i in range(0, 4):
+    plt.annotate(names[i], xy = (square_footage[i], total_GHG_emissions[i]) )
+m, b = np.polyfit(square_footage, total_GHG_emissions , 1)  # 1 for linear (returns m and b)
+x = [0, 100]
+y = [point * m + b for point in x]
+plt.plot(x, y)
+plt.show()
