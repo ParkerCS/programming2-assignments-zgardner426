@@ -59,16 +59,18 @@ for i in range(len(data)):
         except:
             print("failed", data[i][2])
 
-
-plt.figure(1)
-plt.scatter(square_footage, total_GHG_emissions)
-plt.title("Greenhouse Gas Emissions in K-12 Schools by Square Footage")
-plt.ylabel("Total Greenhouse Gas Emissions")
-plt.xlabel("Square Footage")
-for i in range(0, 4):
-    plt.annotate(names[i], xy = (square_footage[i], total_GHG_emissions[i]) )
-m, b = np.polyfit(square_footage, total_GHG_emissions , 1)  # 1 for linear (returns m and b)
-x = [0, 100]
+print(school_names)
+plt.figure(1, facecolor="lightgreen", figsize=(12,7))
+plt.scatter(square_footage, total_GHG_emissions, edgecolors="black", alpha=.3)
+plt.title("Greenhouse Gas Emissions in K-12 Schools by Square Footage", color="darkblue")
+plt.ylabel("Total Greenhouse Gas Emissions", color="darkblue")
+plt.xlabel("Square Footage", color="darkblue")
+plt.annotate(school_names[0], xy=(square_footage[0], total_GHG_emissions[0]))
+plt.annotate(school_names[-1], xy=(square_footage[-1], total_GHG_emissions[-1]))
+m, b = np.polyfit(square_footage, total_GHG_emissions , 1)
+x = [0, 1000000]
 y = [point * m + b for point in x]
 plt.plot(x, y)
+a = school_names.index("Francis W Parker School")
+plt.annotate(school_names[a], xy=(square_footage[a], total_GHG_emissions[a]))
 plt.show()
