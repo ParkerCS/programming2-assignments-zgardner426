@@ -1,3 +1,6 @@
+from bs4 import BeautifulSoup
+import requests
+
 # PROBLEM 1 (12pts)
 # Go to your favorite follow on Twitter.  (not someone who posts explicit materials please)
 # Inspect the twitter feed in Chrome.
@@ -6,9 +9,12 @@
 # Print the tweets in a nicely formatted way.
 # Have fun.  Again, nothing explicit.
 
+url = "https://twitter.com/proffesor_snape?lang=en"
+page = requests.get(url)
+soup = BeautifulSoup(page.text, "html.parser")
 
-
-
+tweets = [x.text.strip() for x in soup.findAll("div", class_="js-tweet-text-container")]
+print(tweets)
 
 # (20pts)
 # Below is a link to a 10-day weather forecast at weather.com
