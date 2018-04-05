@@ -9,12 +9,16 @@ import requests
 # Print the tweets in a nicely formatted way.
 # Have fun.  Again, nothing explicit.
 
+
 url = "https://twitter.com/proffesor_snape?lang=en"
 page = requests.get(url)
 soup = BeautifulSoup(page.text, "html.parser")
 
 tweets = [x.text.strip() for x in soup.findAll("div", class_="js-tweet-text-container")]
-print(tweets)
+for tweet in tweets:
+    print(tweet)
+    print("- Professor Snape")
+
 
 # (20pts)
 # Below is a link to a 10-day weather forecast at weather.com
@@ -27,4 +31,19 @@ print(tweets)
 # Sample sentence:  
 # Wednesday, April 4 will be Partly Cloudy/Windy with a High of 37 degrees and a low of 25, humidity at 52%.  There is 0% chance of rain with winds out of the WNW at 22 mph.
 
+
 url = "https://weather.com/weather/tenday/l/Chicago+IL+USIL0225:1:US"
+page = requests.get(url)
+soup = BeautifulSoup(page.text, "html.parser" )
+
+
+day = [x.text.strip() for x in soup.findAll("span", class_="date-time")]
+date = [x.text.strip() for x in soup.findAll("span", class_="day-detail clearfix")]
+description = [x.text.strip() for x in soup.findAll("td", class_="description")]
+high_low_temp = [x.text.strip() for x in soup.findAll("td", class_="temp")]
+chance_rain = [x.text.strip() for x in soup.findAll("td", class_="precip")]
+wind = [x.text.strip() for x in soup.findAll("td", class_="wind")]
+
+
+for i in range(len(day)):
+    print(day[i] + ",", date[i], "will be", description[i], "with a high/low", high_low_temp[i], "a", chance_rain[i], "chance of rain","and winds from", wind[i])
