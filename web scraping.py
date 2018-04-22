@@ -34,7 +34,7 @@ for tweet in tweets:
 
 url = "https://weather.com/weather/tenday/l/Chicago+IL+USIL0225:1:US"
 page = requests.get(url)
-soup = BeautifulSoup(page.text, "html.parser" )
+soup = BeautifulSoup(page.text, "html.parser")
 
 
 day = [x.text.strip() for x in soup.findAll("span", class_="date-time")]
