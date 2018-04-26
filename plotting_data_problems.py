@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 with open('files/Libraries_-_2017_Visitors_by_Location.csv') as f:
     reader = csv.reader(f)
     data = list(reader)
+
 total_visitors = []
 month_names = data.pop(0)[1:-1]
 month_values = [x for x in range(1, 13)]

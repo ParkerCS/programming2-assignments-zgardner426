@@ -22,17 +22,24 @@ import csv
 apikey = "AIzaSyD65be4pywe7-y4GjMmzZMidOpdmu2lkXo"
 mymap = GoogleMapPlotter(41.923079, -87.638230, 10, apikey=apikey)  # lat, long, zoom_level, apikey=var
 
-
-with open('files/Grocery_Stores_-_2013(1).csv') as f:
+with open('files/Grocery_Stores_-_2013 (1).csv') as f:
     reader = csv.reader(f)
     data = list(reader)
 
+#print(data.pop(0))
 
-data = [x for x in data if float(x[3]) >= "9,000"]
+square_feet = [x[3] for x in data if x[3] != ""]
+square_feet = [float(x.strip()) for x in square_feet]
+square_feet = [x for x in square_feet if x >= 9000]
+
 longitude = [float(x[-2]) for x in data]
 latitude = [float(x[-3]) for x in data]
 
-mymap.scatter(latitude, longitude, marker=False, color="red", size=10, alpha=0.5)
-mymap.heatmap(latitude, longitude, maxIntensity=7, radius=50, dissipating=True)
+#print(latitude)
+#print(longitude)
+
+for i in range(len(latitude)):
+    mymap.circle(latitude[i], longitude[i], 20)
+mymap.heatmap(latitude, longitude, maxIntensity=7, radius=15, dissipating=True)
 
 mymap.draw('mymap.html')
