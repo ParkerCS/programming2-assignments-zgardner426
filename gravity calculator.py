@@ -58,13 +58,18 @@ class Window(QWidget):
         self.grid.addWidget(self.radius_value, 4, 2, 1, 1)
 
         self.calc_button = QPushButton("Calculate")
-        self.grid.addWidget(self.calc_button, 5, 1, 1, 1)
+        self.grid.addWidget(self.calc_button, 5, 1, 1, 2)
 
         self.answer_value = QLabel("0")
-        self.grid.addWidget(self.answer_value, 5, 2, 1, 1)
+        self.grid.addWidget(self.answer_value, 5, 3, 1, 1)
 
         # Signals and Slots
         self.calc_button.clicked.connect(self.gravity_calc)
+
+        #style
+        style_sheet = "gravity_calc_style.css"
+        with open(style_sheet) as f:
+            self.setStyleSheet(f.read())
 
 
         self.show()
